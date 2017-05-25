@@ -15,7 +15,7 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
 
         channelPipeline.names().forEach(System.out::println);
 
-        channelPipeline.addLast("httpServerCodec2", new HttpServerCodec());
+        channelPipeline.addLast("httpServerCodec", new HttpServerCodec());
         channelPipeline.addLast("testHttpServerHandler", new TestHttpServerHandler());
     }
 }
