@@ -12,7 +12,6 @@ public class ByteBufServerChannelInitializer extends ChannelInitializer<SocketCh
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline channelPipeline = ch.pipeline();
-
         channelPipeline.addLast(new ByteBufServerHandler());
     }
 }
