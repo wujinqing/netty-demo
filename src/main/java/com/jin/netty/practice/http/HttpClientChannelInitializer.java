@@ -4,6 +4,8 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.http.HttpClientCodec;
+import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
@@ -15,11 +17,10 @@ import io.netty.util.CharsetUtil;
 public class HttpClientChannelInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-        ChannelPipeline channelPipeline = ch.pipeline();
+        ChannelPipeline pipeline = ch.pipeline();
 
-        channelPipeline.addLast(new LineBasedFrameDecoder(80));
-        channelPipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
-        channelPipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-        channelPipeline.addLast(new HttpClientHandler());
+        pipeline.addLast(new HttpClientCodec());
+
+        pipeline.addLast(new HttpClientHandler());
     }
 }
