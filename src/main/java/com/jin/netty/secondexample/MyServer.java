@@ -13,8 +13,8 @@ import static jdk.nashorn.internal.objects.NativeFunction.bind;
  */
 public class MyServer {
     public static void main(String[] args) throws Exception{
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(2);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(4);
 
         try {
 
